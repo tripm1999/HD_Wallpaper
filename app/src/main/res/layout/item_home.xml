@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="310dp">
+
+    <TextView
+        android:id="@+id/tv_title_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:layout_margin="@dimen/fab_margin"
+        android:textColor="@color/colorBlack" />
+    <Button
+        android:id="@+id/btn_more_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/margintop"
+        android:background="@color/colorPrimary"
+        android:text="@string/more"
+        android:textColor="@color/colorWhite" />
+    <ImageView
+        android:id="@+id/img_home"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_alignParentBottom="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorLinearItem">
+
+        <TextView
+            android:id="@+id/tv_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margintop"
+            android:drawableLeft="@drawable/icon_view"
+            android:text="@string/view"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/tv_love"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margintop"
+            android:layout_toRightOf="@+id/tv_view"
+            android:drawableLeft="@drawable/icon_love"
+            android:text="@string/love"
+            android:textColor="@color/colorWhite" />
+    </RelativeLayout>
+
+</RelativeLayout>
