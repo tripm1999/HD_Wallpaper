@@ -1,18 +1,17 @@
 package com.phamminhtri.hd_wallpaper.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.phamminhtri.hd_wallpaper.R;
 import com.phamminhtri.hd_wallpaper.ui.fragment.CategoryFrag;
 import com.phamminhtri.hd_wallpaper.ui.fragment.HomeFrag;
-import com.phamminhtri.hd_wallpaper.ui.fragment.LatestFrag;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -23,7 +22,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 
 public class HomeAct extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private FrameLayout frameFrag;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
 
@@ -46,7 +44,6 @@ public class HomeAct extends AppCompatActivity implements NavigationView.OnNavig
     }
 
     private void init() {
-        frameFrag = (FrameLayout) findViewById(R.id.frame_frag);
         fragmentManager = getSupportFragmentManager();
 
     }
@@ -69,37 +66,30 @@ public class HomeAct extends AppCompatActivity implements NavigationView.OnNavig
         // Handle navigation view item clicks here.
         switch (item.getItemId()) {
             case R.id.nav_latest:
-                setTitle(R.string.title_latest);
-                LatestFrag latestFrag = new LatestFrag();
-                fragmentTransaction.replace(R.id.frame_frag, latestFrag);
+                setTitle(R.string.menu_home);
+                HomeFrag homeFrag = new HomeFrag();
+                fragmentTransaction = fragmentManager.beginTransaction().replace(R.id.frame_frag, homeFrag);
+                fragmentTransaction.commit();
                 break;
 
             case R.id.nav_category:
                 setTitle(R.string.title_category);
                 CategoryFrag categoryFrag = new CategoryFrag();
-                fragmentTransaction.replace(R.id.frame_frag, categoryFrag);
+                fragmentTransaction = fragmentManager.beginTransaction().replace(R.id.frame_frag, categoryFrag);
+                fragmentTransaction.commit();
                 break;
+            case R.id.nav_detail:
+                startActivity(new Intent(HomeAct.this, DetailsAct.class));
 
-            case R.id.nav_gifs:
-                setTitle(R.string.title_gifs);
-                break;
-            case R.id.nav_favorite:
-                setTitle(R.string.title_frag_favorite);
                 break;
             case R.id.nav_rate:
                 setTitle(R.string.title_rate);
-                break;
-            case R.id.nav_more:
-                setTitle(R.string.title_more);
                 break;
             case R.id.nav_about:
                 setTitle(R.string.title_about);
                 break;
             case R.id.nav_setting:
                 setTitle(R.string.title_setting);
-                break;
-            case R.id.nav_primary:
-                setTitle(R.string.title_primary);
                 break;
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

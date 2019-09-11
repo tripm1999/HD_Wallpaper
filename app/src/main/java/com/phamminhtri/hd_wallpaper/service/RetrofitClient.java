@@ -9,16 +9,16 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RetrofitClient {
-    public static Retrofit retrofit;
+class RetrofitClient {
+    private static Retrofit retrofit;
 
     public static Retrofit getClient(String baseUrl) {
         OkHttpClient builder = new OkHttpClient.Builder()
-                .connectTimeout(15000, TimeUnit.MILLISECONDS)//thời gian chờ kết nối vs sever, quá là hủy
-                .readTimeout(15000, TimeUnit.MILLISECONDS)//thời gian chờ dữ liệu
-                .retryOnConnectionFailure(true)
-                .build();//nếu cái sever có vấn đề j nó sẽ khôi phục lại thử lại cái kết nối đó.
-        Gson gson = new GsonBuilder().setLenient().create();// khởi tạo cái này truyền vào ConverterFactory để tránh trường hợp bị lỗi khi chuyển json về java
+                .connectTimeout(5000, TimeUnit.MILLISECONDS)//thời gian chờ kết nối vs sever, quá là hủy
+                .readTimeout(5000, TimeUnit.MILLISECONDS)//thời gian chờ dữ liệu
+                .retryOnConnectionFailure(true)//nếu cái sever có vấn đề j nó sẽ khôi phục lại thử lại cái kết nối đó.
+                .build();
+      Gson gson = new GsonBuilder().setLenient().create();// khởi tạo cái này truyền vào ConverterFactory để tránh trường hợp bị lỗi khi chuyển json về java
         retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)// chỉ định phần đầu Api là gì
                 .client(builder)

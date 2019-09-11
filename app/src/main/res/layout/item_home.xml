@@ -1,58 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="310dp">
-
-    <TextView
-        android:id="@+id/tv_title_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:layout_margin="@dimen/fab_margin"
-        android:textColor="@color/colorBlack" />
-    <Button
-        android:id="@+id/btn_more_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_margin="@dimen/margintop"
-        android:background="@color/colorPrimary"
-        android:text="@string/more"
-        android:textColor="@color/colorWhite" />
-    <ImageView
-        android:id="@+id/img_home"
-        android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:layout_alignParentBottom="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher_background" />
+    android:layout_height="310dp"
+    android:layout_marginTop="@dimen/cardview"
+    app:cardCornerRadius="@dimen/margintop"
+    app:cardElevation="@dimen/cardview">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorLinearItem">
+        android:layout_height="match_parent"
+        android:background="@color/colorGray">
+
+        <Button
+            android:id="@+id/btn_more_home"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/margintop"
+            android:background="@color/colorPrimary"
+            android:text="@string/more"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:layout_alignParentEnd="true" />
+
+        <ImageView
+            android:id="@+id/img_home"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/margintop"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/description" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorLinearItem">
+
+            <TextView
+                android:id="@+id/tv_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margintop"
+                android:drawableLeft="@drawable/icon_view"
+                android:text="@string/view"
+                android:textColor="@color/colorWhite"
+                android:layout_marginStart="@dimen/margintop"
+                android:drawableStart="@drawable/icon_view" />
+
+            <TextView
+                android:id="@+id/tv_love"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margintop"
+                android:layout_toRightOf="@+id/tv_view"
+                android:drawableLeft="@drawable/icon_love"
+                android:textColor="@color/colorWhite"
+                android:layout_marginStart="@dimen/margintop"
+                android:layout_toEndOf="@+id/tv_view"
+                android:drawableStart="@drawable/icon_love" />
+        </RelativeLayout>
 
         <TextView
-            android:id="@+id/tv_view"
+            android:id="@+id/tv_title_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margintop"
-            android:drawableLeft="@drawable/icon_view"
-            android:text="@string/view"
-            android:textColor="@color/colorWhite" />
-
-        <TextView
-            android:id="@+id/tv_love"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margintop"
-            android:layout_toRightOf="@+id/tv_view"
-            android:drawableLeft="@drawable/icon_love"
-            android:text="@string/love"
-            android:textColor="@color/colorWhite" />
+            android:layout_margin="@dimen/fab_margin"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            tools:ignore="RelativeOverlap" />
     </RelativeLayout>
 
-</RelativeLayout>
+</androidx.cardview.widget.CardView>

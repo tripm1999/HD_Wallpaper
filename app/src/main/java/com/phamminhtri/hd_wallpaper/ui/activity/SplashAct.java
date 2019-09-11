@@ -20,7 +20,7 @@ public class SplashAct extends AppCompatActivity {
         hideStatusBar();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        imgSplash = (ImageView) findViewById(R.id.img_splash);
+        imgSplash = findViewById(R.id.img_splash);
         loadImage();
 
         startAct();

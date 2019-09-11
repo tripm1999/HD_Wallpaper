@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/cardview"
+    app:cardCornerRadius="@dimen/margintop"
+    app:cardElevation="@dimen/cardview">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorGray">
+
+        <ImageView
+            android:id="@+id/img_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/margintop"
+            android:contentDescription="@string/description"
+            android:scaleType="center" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorLinearItem">
+
+            <TextView
+                android:id="@+id/tv_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/margintop"
+                android:layout_marginLeft="@dimen/margintop"
+                android:drawableStart="@drawable/icon_view"
+                android:drawableLeft="@drawable/icon_view"
+                android:text="@string/view"
+                android:textColor="@color/colorWhite" />
+
+            <TextView
+                android:id="@+id/tv_love"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/margintop"
+                android:layout_marginLeft="@dimen/margintop"
+                android:layout_toEndOf="@+id/tv_view"
+                android:layout_toRightOf="@+id/tv_view"
+                android:drawableStart="@drawable/icon_love"
+                android:drawableLeft="@drawable/icon_love"
+                android:text="@string/love"
+                android:textColor="@color/colorWhite" />
+        </RelativeLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

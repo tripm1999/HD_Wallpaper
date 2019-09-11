@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.DetailsAct"
+    android:padding="@dimen/margintop">
+
+    <ImageView
+        android:id="@+id/img_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/fab_margin"
+        app:fab_addButtonColorNormal="@color/colorAccent"
+        app:fab_colorPressed="@color/colorWhite"
+        app:fab_labelStyle="@style/Floating_button">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fb_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_colorPressed="@color/colorWhite"
+            app:fab_icon="@drawable/icon_share"
+            app:fab_labelsPosition="left"
+            app:fab_title="@string/share"
+            tools:ignore="UnusedAttribute"
+            />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fb_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_colorPressed="@color/colorWhite"
+            app:fab_icon="@drawable/icon_save_image"
+            app:fab_labelsPosition="left"
+            app:fab_title="@string/saveimg" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fb_set_wallpaper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            app:fab_colorNormal="@color/colorAccent"
+            app:fab_colorPressed="@color/colorWhite"
+            app:fab_icon="@drawable/icon_set_as_wallpaper"
+            app:fab_labelsPosition="left"
+            app:fab_title="@string/setwall"
+            tools:ignore="UnusedAttribute" />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+</RelativeLayout>

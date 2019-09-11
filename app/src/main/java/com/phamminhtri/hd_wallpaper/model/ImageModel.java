@@ -1,7 +1,7 @@
 package com.phamminhtri.hd_wallpaper.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-public class ImageModel {
+public  class ImageModel {
     @SerializedName("image")
     @Expose
     private String image;

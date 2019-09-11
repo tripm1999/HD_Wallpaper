@@ -4,6 +4,8 @@ package com.phamminhtri.hd_wallpaper.ui.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,14 +13,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.phamminhtri.hd_wallpaper.R;
 import com.phamminhtri.hd_wallpaper.adapter.HomeAdapter;
 import com.phamminhtri.hd_wallpaper.model.AlbumModel;
 import com.phamminhtri.hd_wallpaper.service.ApiService;
 import com.phamminhtri.hd_wallpaper.service.DataClient;
-import com.phamminhtri.hd_wallpaper.service.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ public class HomeFrag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        rvHome = (RecyclerView) view.findViewById(R.id.rv_home);
+        rvHome = view.findViewById(R.id.rv_home);
         init();
         getdata();
         return view;
@@ -47,9 +47,25 @@ public class HomeFrag extends Fragment {
 
     private void init() {
         albumModels = new ArrayList<>();
-        homeAdapter = new HomeAdapter(albumModels, getContext());
+        homeAdapter = new HomeAdapter(albumModels, getContext(), new HomeAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(AlbumModel albumModel) {
+                FragmentManager fragmentManager = getFragmentManager();
+                ImageFrag imageFrag = new ImageFrag();
+                //gửi giữ liệu sang frag bên
+                Bundle args = new Bundle();
+                args.putString("idalbum", albumModel.getId());
+                args.putString("titlee", "album: " + albumModel.getName());
+                imageFrag.setArguments(args);
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction().replace(R.id.frame_frag, imageFrag);
+                //addToBackStack(null) -  cho fag vào hàng đợi để có thể back trở lại
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         rvHome.setLayoutManager(linearLayoutManager);
+        rvHome.setHasFixedSize(true);
         rvHome.setAdapter(homeAdapter);
     }
 
@@ -58,15 +74,14 @@ public class HomeFrag extends Fragment {
         dataClient.listAlbum().enqueue(new Callback<List<AlbumModel>>() {
             @Override
             public void onResponse(Call<List<AlbumModel>> call, Response<List<AlbumModel>> response) {
-                //Xử lý dữ liệu trả về
-                Log.e("AAA", "onResponsghjge: " + response.body());
+                assert response.body() != null;
                 albumModels.addAll(response.body());
                 homeAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onFailure(Call<List<AlbumModel>> call, Throwable t) {
-                Toast.makeText(getContext(), "lỗi" + t, Toast.LENGTH_LONG);
+                Log.d("AAG", "onFailure: " + t);
                 //Xử lý lỗi
 
             }

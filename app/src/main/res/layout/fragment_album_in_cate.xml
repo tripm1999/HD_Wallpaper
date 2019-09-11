@@ -3,10 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.CategoryFrag">
+    tools:context=".ui.fragment.AlbumInCateFrag">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_cate"
+        android:id="@+id/rv_album_in_cate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />
+
 </FrameLayout>

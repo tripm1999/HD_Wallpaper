@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/category"
+    android:layout_margin="@dimen/margintop"
+    android:elevation="@dimen/margintop"
+    android:padding="@dimen/cardview"
+    app:cardCornerRadius="@dimen/margintop"
+    tools:ignore="UnusedAttribute">
+
+    <ImageView
+        android:id="@+id/img_cate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="center"
+        tools:ignore="ContentDescription"
+        android:contentDescription="@string/description" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/button_height">
+
+        <TextView
+            android:id="@+id/tv_title_cate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:textAllCaps="true"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/fab_margin"
+            android:textStyle="bold"
+            tools:ignore="SpUsage" />
+
+        <TextView
+            android:id="@+id/tv_size_cate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/margintop"
+            android:layout_marginLeft="@dimen/margintop"
+            android:layout_toEndOf="@id/tv_title_cate"
+            android:layout_toRightOf="@id/tv_title_cate"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/sizetitle"
+            android:textStyle="bold"
+            tools:ignore="SpUsage" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

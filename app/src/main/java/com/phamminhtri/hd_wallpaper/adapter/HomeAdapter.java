@@ -14,15 +14,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.phamminhtri.hd_wallpaper.R;
 import com.phamminhtri.hd_wallpaper.model.AlbumModel;
+
 import java.util.ArrayList;
 
 public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private ArrayList<AlbumModel> modelArrayList;
-    private Context context;
+    private final ArrayList<AlbumModel> modelArrayList;
+    private final Context context;
+    private final OnItemClickListener listener;
 
-    public HomeAdapter(ArrayList<AlbumModel> modelArrayList, Context context) {
+    public HomeAdapter(ArrayList<AlbumModel> modelArrayList, Context context, OnItemClickListener listener) {
         this.modelArrayList = modelArrayList;
         this.context = context;
+        this.listener = listener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(AlbumModel albumModel);
     }
 
     @NonNull
@@ -35,7 +42,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         AlbumModel albumModel = modelArrayList.get(position);
-   ((itemHome) holder).Container(albumModel.getName(), albumModel.getImage(), albumModel.getView()+"", albumModel.getLove()+"", albumModel.getId());
+        ((itemHome) holder).Container(albumModel);
 
     }
 
@@ -44,14 +51,14 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return modelArrayList.size();
     }
 
-    public class itemHome extends RecyclerView.ViewHolder {
-        private TextView tvTitleHome;
-        private Button btnMoreHome;
-        private ImageView imgHome;
-        private TextView tvView;
-        private TextView tvLove;
+    class itemHome extends RecyclerView.ViewHolder {
+        private final TextView tvTitleHome;
+        private final Button btnMoreHome;
+        private final ImageView imgHome;
+        private final TextView tvView;
+        private final TextView tvLove;
 
-        public itemHome(@NonNull View itemView) {
+        itemHome(@NonNull View itemView) {
             super(itemView);
             tvTitleHome = itemView.findViewById(R.id.tv_title_home);
             btnMoreHome = itemView.findViewById(R.id.btn_more_home);
@@ -60,14 +67,19 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             tvLove = itemView.findViewById(R.id.tv_love);
         }
 
-        public void Container(String name, String image, String view, String love, String idalbum) {
-            tvTitleHome.setText(name);
-//            Glide.with(context).load(image).into(imgHome);
+        void Container(final AlbumModel albumModel) {
+            String img = "http://192.168.1.5:3000/" + albumModel.getImage();
+            String view = albumModel.getView() + "";
+            String love = albumModel.getLove() + "";
+
+            tvTitleHome.setText(albumModel.getName());
+            Glide.with(context).load(img).into(imgHome);
             tvView.setText(view);
             tvLove.setText(love);
             btnMoreHome.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    listener.onItemClick(albumModel);
 
                 }
             });
