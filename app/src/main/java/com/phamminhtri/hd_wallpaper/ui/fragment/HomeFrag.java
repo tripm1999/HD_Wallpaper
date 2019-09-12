@@ -59,7 +59,7 @@ public class HomeFrag extends Fragment {
                 imageFrag.setArguments(args);
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction().replace(R.id.frame_frag, imageFrag);
                 //addToBackStack(null) -  cho fag vào hàng đợi để có thể back trở lại
-                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.addToBackStack("Home");
                 fragmentTransaction.commit();
             }
         });
@@ -81,9 +81,8 @@ public class HomeFrag extends Fragment {
 
             @Override
             public void onFailure(Call<List<AlbumModel>> call, Throwable t) {
-                Log.d("AAG", "onFailure: " + t);
                 //Xử lý lỗi
-
+                Log.d("AAG", "onFailure: " + t);
             }
         });
     }

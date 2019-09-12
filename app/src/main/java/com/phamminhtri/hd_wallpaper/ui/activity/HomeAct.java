@@ -78,10 +78,6 @@ public class HomeAct extends AppCompatActivity implements NavigationView.OnNavig
                 fragmentTransaction = fragmentManager.beginTransaction().replace(R.id.frame_frag, categoryFrag);
                 fragmentTransaction.commit();
                 break;
-            case R.id.nav_detail:
-                startActivity(new Intent(HomeAct.this, DetailsAct.class));
-
-                break;
             case R.id.nav_rate:
                 setTitle(R.string.title_rate);
                 break;

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.phamminhtri.hd_wallpaper.R;
 import com.phamminhtri.hd_wallpaper.model.CategoryModel;
+import com.phamminhtri.hd_wallpaper.service.ApiService;
 
 import java.util.ArrayList;
 
@@ -63,7 +64,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         private void Container(final CategoryModel categoryModel, final OnItemClickListener listener) {
             String catesize = "( " + categoryModel.getCountalbum() + " )";
-            Glide.with(context).load("http://192.168.1.5:3000/" + categoryModel.getImage()).into(imgCate);
+            Glide.with(context).load(ApiService.Base_Url + categoryModel.getImage()).into(imgCate);
             tvTitleCate.setText(categoryModel.getTitle());
             tvSizeCate.setText(catesize);
 

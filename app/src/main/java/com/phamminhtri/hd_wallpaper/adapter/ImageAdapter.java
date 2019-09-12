@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.phamminhtri.hd_wallpaper.R;
 import com.phamminhtri.hd_wallpaper.model.ImageModel;
+import com.phamminhtri.hd_wallpaper.service.ApiService;
 
 import java.util.ArrayList;
 
@@ -60,7 +61,7 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
 
         private void Container(final ImageModel imageModel, final OnItemClickListener onItemClickListener) {
-            Glide.with(context).load("http://192.168.1.5:3000/" + imageModel.getImage()).into(imgImage);
+            Glide.with(context).load(ApiService.Base_Url + imageModel.getImage()).into(imgImage);
             tvLove.setText(imageModel.getLove() + "");
             tvView.setText(imageModel.getView() + "");
             itemView.setOnClickListener(new View.OnClickListener() {

@@ -2,6 +2,7 @@ package com.phamminhtri.hd_wallpaper.ui.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.WallpaperManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -26,6 +27,7 @@ import com.phamminhtri.hd_wallpaper.R;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -34,21 +36,21 @@ public class DetailsAct extends AppCompatActivity implements View.OnClickListene
     private FloatingActionButton fbSave;
     private FloatingActionButton fbSetWallpaper;
     private FloatingActionButton fbShare;
-    String linkimage = "name";
+    String linkimage = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         init();
-        Intent intent = getIntent();
-        linkimage = intent.getExtras().getString("linkImg");
-        Toast.makeText(this, "img: " + linkimage, Toast.LENGTH_SHORT).show();
         loadimg();
     }
 
     private void loadimg() {
-        Glide.with(this).load(linkimage).into(imgImage);
+        Intent intent = this.getIntent();
+
+            linkimage = intent.getExtras().getString("linkImg");
+            Glide.with(this).load(linkimage).into(imgImage);
     }
 
     private void init() {
@@ -76,6 +78,12 @@ public class DetailsAct extends AppCompatActivity implements View.OnClickListene
                 });
                 break;
             case R.id.fb_set_wallpaper:
+                Glide.with(this).asBitmap().load(linkimage).into(new SimpleTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                        saveWallpaper(resource);
+                    }
+                });
                 break;
             case R.id.fb_share:
                 break;
@@ -122,6 +130,18 @@ public class DetailsAct extends AppCompatActivity implements View.OnClickListene
         }
     }
 
+    private void saveWallpaper(Bitmap finalBitmap) {
+        WallpaperManager m = WallpaperManager.getInstance(this);
+
+        try {
+            m.setBitmap(finalBitmap);
+            Toast.makeText(this, "Wallpaper Set Successfully!!", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Setting WallPaper Failed!!", Toast.LENGTH_SHORT).show();
+        }
+
+    }
 
     public void initPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

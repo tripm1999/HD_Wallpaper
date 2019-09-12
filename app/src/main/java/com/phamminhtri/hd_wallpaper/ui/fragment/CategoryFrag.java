@@ -62,7 +62,7 @@ public class CategoryFrag extends Fragment {
                 albumInCateFrag.setArguments(args);
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction().replace(R.id.frame_frag, albumInCateFrag, "");
                 //addToBackStack(null) -  cho fag vào hàng đợi để có thể back trở lại
-                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.addToBackStack("Category");
                 fragmentTransaction.commit();
             }
 

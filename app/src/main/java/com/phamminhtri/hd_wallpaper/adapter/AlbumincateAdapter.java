@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.phamminhtri.hd_wallpaper.R;
 import com.phamminhtri.hd_wallpaper.model.AlbuminCate;
+import com.phamminhtri.hd_wallpaper.service.ApiService;
 
 import java.util.ArrayList;
 
@@ -67,7 +68,7 @@ public class AlbumincateAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
 
         void Container(final AlbuminCate albuminCate, final OnItemClickListener onItemClickListener) {
-            Glide.with(context).load("http://192.168.1.5:3000/" + albuminCate.getImage()).into(imgAlbum);
+            Glide.with(context).load(ApiService.Base_Url + albuminCate.getImage()).into(imgAlbum);
             String name = (albuminCate.getName() + "");
             String love = (albuminCate.getLove() + "");
             String view = (albuminCate.getView() + "");

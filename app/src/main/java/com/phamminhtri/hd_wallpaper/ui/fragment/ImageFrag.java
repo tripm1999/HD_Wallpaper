@@ -64,7 +64,7 @@ public class ImageFrag extends Fragment {
         imageAdapter = new ImageAdapter(imageList, getContext(), new ImageAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(ImageModel imageModel) {
-                String linkimg = "http://192.168.1.5:3000/"+ imageModel.getImage();
+                String linkimg = ApiService.Base_Url + imageModel.getImage();
                 Intent intent = new Intent(getContext(), DetailsAct.class);
                 intent.putExtra("linkImg", linkimg);
                 startActivity(intent);

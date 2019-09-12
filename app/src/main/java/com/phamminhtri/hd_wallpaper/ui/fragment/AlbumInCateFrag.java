@@ -69,7 +69,7 @@ public class AlbumInCateFrag extends Fragment {
                 imageFrag.setArguments(args);
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction().replace(R.id.frame_frag, imageFrag);
                 //addToBackStack(null) -  cho fag vào hàng đợi để có thể back trở lại
-                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.addToBackStack("Album");
                 fragmentTransaction.commit();
             }
         });

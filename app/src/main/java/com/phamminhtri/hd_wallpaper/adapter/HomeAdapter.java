@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.phamminhtri.hd_wallpaper.R;
 import com.phamminhtri.hd_wallpaper.model.AlbumModel;
+import com.phamminhtri.hd_wallpaper.service.ApiService;
 
 import java.util.ArrayList;
 
@@ -68,7 +69,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         void Container(final AlbumModel albumModel) {
-            String img = "http://192.168.1.5:3000/" + albumModel.getImage();
+            String img = ApiService.Base_Url + albumModel.getImage();
             String view = albumModel.getView() + "";
             String love = albumModel.getLove() + "";
 
